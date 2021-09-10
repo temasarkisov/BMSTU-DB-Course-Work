@@ -8,46 +8,22 @@ workspace.import_model("models/model.json")
 
 browser = workspace.browser("qualifying")
 
+cut1 = PointCut("drivers", [])
+cut2 = PointCut("races", [])
+cell = Cell(browser.cube, cuts = [cut1, cut2])
+result = browser.aggregate(cell, drilldown=["drivers", "races"])
 
-# 3. Play with aggregates
-result = browser.aggregate()
-print("position_min : %8d" % result.summary["position_min"])
+list_res = [row for row in result]
 
-
-'''
-#
-# 4. Drill-down through a dimension
-#
-
-print("\n"
-      "Drill Down by Category (top-level Item hierarchy)\n"
-      "==================================================")
-#
-result = browser.aggregate(drilldown=["driver_info"])
-#
-print(("%-20s%10s%10s%10s\n"+"-"*50) % ("Category", "Count", "Total", "Double"))
-#
-for row in result.table_rows("driver_info"):
-    print("%-20s%10d%10d%10d" % ( row.label,
-                              row.record["record_count"],
-                              row.record["amount_sum"],
-                              )
+def filter_racer(data, name, year):
+      temp = list(filter( 
+                        lambda x: x['drivers.surname'] == name and 
+                        x['races.year'] == year, 
+                        data
+            )
       )
+      
+      return sorted(temp, key=lambda x: x['position_min'])
+ 
+for line in filter_racer(list_res, 'Hamilton', 2009): print(line)
 
-print("\n"
-      "Slice where Category = Equity\n"
-      "==================================================")
-
-cut = PointCut("item", ["e"])
-cell = Cell(browser.cube, cuts = [cut])
-
-result = browser.aggregate(cell, drilldown=["item"])
-
-print(("%-20s%10s%10s%10s\n"+"-"*50) % ("Sub-category", "Count", "Total", "Double"))
-
-for row in result.table_rows("item"):
-    print("%-20s%10d%10d%10d" % ( row.label,
-                              row.record["record_count"],
-                              row.record["amount_sum"],
-                              ))
-'''
