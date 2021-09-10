@@ -1,0 +1,37 @@
+{
+    "dimensions": [
+        {"name":"driver_id"},
+        {"name":"dob", "role": "time"},
+        {"name":"nationality"}
+    ],
+    "cubes": [
+        {
+            "name": "drivers",
+            "dimensions": ["driver_id", "dob", "nationality"],
+            "measures": [
+                {"name":"code", "label":"code"}
+            ],
+            "aggregates": [
+                    {
+                        "name": "code_sum",
+                        "function": "sum",
+                        "measure": "code"
+                    },
+                    {
+                        "name": "record_count",
+                        "function": "count"
+                    }
+                ],
+            "mappings": {
+                          "item.forename": "forename",
+                          "item.surname": "surname",
+                          "item.nationality": "nationality",
+                          "item.url": "url"
+                         },
+            "info": {
+                "min_date": "2010-01-01",
+                "max_date": "2010-12-31"
+            }
+        }
+    ]
+}

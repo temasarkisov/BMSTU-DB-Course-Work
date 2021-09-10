@@ -1,0 +1,27 @@
+{
+    "cubes": [
+        {
+            "name": "qualifying",
+            "dimensions": ["drivers", "races"],
+            "joins": [
+                {"master":"race_id", "detail":"races.race_id"},
+                {"master":"driver_id", "detail":"drivers.driver_id"}
+            ],
+            "measures": [
+		        {"name": "position"}
+            ],
+            "aggregates": [
+                {
+                    "name": "position_min",
+                    "function": "sum",
+                    "measure": "position"
+                }
+            ]
+        }
+    ],
+
+    "dimensions": [
+        { "name": "drivers", "attributes": ["driver_ref", "surname"] },
+        { "name": "races", "attributes": ["year", "name"] }
+    ]
+}
