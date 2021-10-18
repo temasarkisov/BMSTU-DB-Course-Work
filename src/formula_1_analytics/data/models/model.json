@@ -13,7 +13,7 @@
             "aggregates": [
                 {
                     "name": "position_min",
-                    "function": "sum",
+                    "function": "min",
                     "measure": "position"
                 }
             ]
