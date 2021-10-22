@@ -1,4 +1,5 @@
 {% load static %}
+{% load poll_extras %}
 
 <html>
 
@@ -31,16 +32,16 @@
             <!-- <h4 style="color:rgb(80, 80, 80);">Driver Info</h4> -->
             Driver Info
 
-            <div class="inner-form">  <!-- value_driver_name -->
+            <div class="inner-form">  <!-- value_driver_forename -->
               
               
               <div class="label-field">
-                <label for="value_driver_name">Driver Name</label>
+                <label for="value_driver_forename">Driver Forename</label>
               </div>
 
 
               <div class="input-field second-wrap">
-                <input id="value_driver_name" type="text" name="value_driver_name" value="{{ current_keyword }}" placeholder="Lewis" />
+                <input id="value_driver_forename" type="text" name="value_driver_forename" value="{{ current_keyword }}" placeholder="Lewis" />
               </div>
 
               
@@ -166,20 +167,6 @@
 
               
             </div>          
-
-            <div class="inner-form">  <!-- value_race_year -->
-              
-              
-              <div class="label-field">
-                <label for="value_race_year">Race Year</label>
-              </div>
-
-              <div class="input-field second-wrap">
-                <input id="value_race_year" type="text" name="value_race_year" value="{{ current_keyword }}" placeholder="2009" />
-              </div>
-
-              
-            </div> 
 
             <div class="inner-form">  <!-- value_race_date -->
               
@@ -332,38 +319,34 @@
     </div>
 
 
-    {% if values_dict %}
+    {% if result_list %}
       <table class="table table-dark table-borderless result-table">
         <thead>
           <tr>
             <th scope="col"></th>
+            <th scope="col">Fact Key</th>
+            <th scope="col">Driver Forename</th>
+            <th scope="col">Driver Surname</th>
+            <th scope="col">Race Name</th>
+            <th scope="col">Race Date</th>
             <th scope="col">Number</th>
             <th scope="col">Grid</th>
             <th scope="col">Position</th>
-            <th scope="col">Points</th>
+            <th scope="col">Position Order</th>
             <th scope="col">Laps</th>
-            <th scope="col">Time</th>
-            <th scope="col">Fastest Lap</th>
-            <th scope="col">Fastest Lap Time</th>
-            <th scope="col">Fastest Lap Speed</th>
-            <th scope="col">Status</th>
-          </tr>
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Number</th>
-            <th scope="col">Grid</th>
-            <th scope="col">Position</th>
             <th scope="col">Points</th>
-            <th scope="col">Laps</th>
-            <th scope="col">Time</th>
-            <th scope="col">Fastest Lap</th>
-            <th scope="col">Fastest Lap Time</th>
             <th scope="col">Fastest Lap Speed</th>
-            <th scope="col">Status</th>
           </tr>
         </thead>
+        {% for result in result_list %}
+          <tr>
+            <th></th>
+            {% for value in result %}            
+              <th>{{ value }}</th>
+            {% endfor %}
+          </tr>
+        {% endfor %}
       </table>
-      {{ values_dict }}
     {% endif %}
 
 

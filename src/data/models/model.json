@@ -2,63 +2,129 @@
     "cubes": [
         {
             "name": "result",
-            "dimensions": ["race", "driver"],
+            "dimensions": ["driver", "race", "number", "grid", "position", "position_order", "points", "laps", "milliseconds", "fastest_lap", "rank", "fastest_lap_speed"],
             "joins": [
+                {"master":"driver_id", "detail":"driver.driver_id"},
                 {"master":"race_id", "detail":"race.race_id"},
-                {"master":"race.circuit_id", "detail":"circuit.circuit_id"},
-                {"master":"driver_id", "detail":"driver.driver_id"}
+                {"master":"race.circuit_id", "detail":"circuit.circuit_id"}
             ],
             "mappings": {
                 "race.circuit_name":"circuit.name",
                 "race.circuit_location":"circuit.location"
-            },
-            "measures": [
-		        {"name": "points"},
-                {"name": "fastest_lap_speed"}
-            ],
-            "aggregates": [
-                {
-                    "name": "points_max",
-                    "function": "max",
-                    "measure": "points"
-                },
-                {
-                    "name": "points_sum",
-                    "function": "sum",
-                    "measure": "points"
-                },
-                {
-                    "name": "fastest_lap_speed_max",
-                    "function": "max",
-                    "measure": "fastest_lap_speed"
-                },
-                {
-                    "name": "fastest_lap_speed_min",
-                    "function": "min",
-                    "measure": "fastest_lap_speed"
-                }
-            ]
+            }
         }
     ],
 
     "dimensions": [
         {   
+            "name": "driver",       
+            "levels": [
+                {
+                    "name":"forename",
+                    "attributes": ["forename"],
+                    "key":"forename"
+                },
+                {
+                    "name":"surname",
+                    "attributes": ["surname"],
+                    "key":"surname"
+                },
+                {
+                    "name":"code",
+                    "attributes": ["code"],
+                    "key":"code"
+                },
+                {
+                    "name":"driver_number",
+                    "attributes": ["driver_number"],
+                    "key":"driver_number"
+                },
+                {
+                    "name":"dob",
+                    "attributes": ["dob"],
+                    "key":"dob"
+                },
+                {
+                    "name":"nationality",
+                    "attributes": ["nationality"],
+                    "key":"nationality"
+                }
+            ],
+            "hierarchies": [
+                {"name": "driver_forename_first", "levels":["forename"]},
+                {"name": "driver_surname_first", "levels":["surname"]},
+                {"name": "driver_code_first", "levels":["code"]},
+                {"name": "driver_number_first", "levels":["driver_number"]},
+                {"name": "driver_dob_first", "levels":["dob"]},
+                {"name": "driver_nationality_first", "levels":["nationality"]}
+            ],
+            "default_hierarchy_name": "driver_surname_first"   
+        },
+        {   
             "name": "race", 
             "levels": [
                 {
-                    "name":"race",
-                    "attributes": ["race_name", "race_date", "circuit_name", "circuit_location"]
-                }
-            ] 
-        }, 
-        {   
-            "name": "driver", 
-            "levels": [
+                    "name":"name",
+                    "attributes": ["name"],
+                    "key":"name"
+                },
                 {
-                    "name":"driver",
-                    "attributes": ["code"]
+                    "name":"date",
+                    "attributes": ["date"],
+                    "key":"date"
+                },
+                {
+                    "name":"round",
+                    "attributes": ["round"],
+                    "key":"round"
+                },
+                {
+                    "name":"circuit_name",
+                    "attributes": ["circuit_name"],
+                    "key":"circuit_name"
+                },
+                {
+                    "name":"circuit_location",
+                    "attributes": ["circuit_location"],
+                    "key":"circuit_location"
                 }
-            ] 
+            ],
+            "hierarchies": [
+                {"name": "race_name_first", "levels":["name"]},
+                {"name": "race_date_first", "levels":["date"]},
+                {"name": "race_date_round", "levels":["round"]}
+            ],
+            "default_hierarchy_name": "race_name_first" 
+        },
+        {
+            "name":"number"
+        },
+        {
+            "name":"grid"
+        },
+        {
+            "name":"position"
+        },
+        {
+            "name":"position_order"
+        },
+        {
+            "name":"points"
+        }, 
+        {
+            "name":"laps"
+        },
+        {
+            "name":"milliseconds"
+        },
+        {
+            "name":"fastest_lap"
+        },
+        {
+            "name":"rank"
+        },
+        {
+            "name":"fastest_lap_speed"
         }
     ]
 }
