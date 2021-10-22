@@ -1,0 +1,64 @@
+{
+    "cubes": [
+        {
+            "name": "result",
+            "dimensions": ["race", "driver"],
+            "joins": [
+                {"master":"race_id", "detail":"race.race_id"},
+                {"master":"race.circuit_id", "detail":"circuit.circuit_id"},
+                {"master":"driver_id", "detail":"driver.driver_id"}
+            ],
+            "mappings": {
+                "race.circuit_name":"circuit.name",
+                "race.circuit_location":"circuit.location"
+            },
+            "measures": [
+		        {"name": "points"},
+                {"name": "fastest_lap_speed"}
+            ],
+            "aggregates": [
+                {
+                    "name": "points_max",
+                    "function": "max",
+                    "measure": "points"
+                },
+                {
+                    "name": "points_sum",
+                    "function": "sum",
+                    "measure": "points"
+                },
+                {
+                    "name": "fastest_lap_speed_max",
+                    "function": "max",
+                    "measure": "fastest_lap_speed"
+                },
+                {
+                    "name": "fastest_lap_speed_min",
+                    "function": "min",
+                    "measure": "fastest_lap_speed"
+                }
+            ]
+        }
+    ],
+
+    "dimensions": [
+        {   
+            "name": "race", 
+            "levels": [
+                {
+                    "name":"race",
+                    "attributes": ["race_name", "race_date", "circuit_name", "circuit_location"]
+                }
+            ] 
+        }, 
+        {   
+            "name": "driver", 
+            "levels": [
+                {
+                    "name":"driver",
+                    "attributes": ["code"]
+                }
+            ] 
+        }
+    ]
+}

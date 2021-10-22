@@ -1078,3 +1078,7 @@ legend {
 .s003 form .inner-form .input-field.second-wrap input::placeholder {
   color: #a9a9a94f;
 }
+.result-table {
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+}

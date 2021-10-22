@@ -321,7 +321,7 @@
 
 
         </div>
-        
+
 
         <input class="btn-search-my" type="submit" value="Search">  <!-- search button -->
 
@@ -330,6 +330,42 @@
 
 
     </div>
+
+
+    {% if values_dict %}
+      <table class="table table-dark table-borderless result-table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Number</th>
+            <th scope="col">Grid</th>
+            <th scope="col">Position</th>
+            <th scope="col">Points</th>
+            <th scope="col">Laps</th>
+            <th scope="col">Time</th>
+            <th scope="col">Fastest Lap</th>
+            <th scope="col">Fastest Lap Time</th>
+            <th scope="col">Fastest Lap Speed</th>
+            <th scope="col">Status</th>
+          </tr>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Number</th>
+            <th scope="col">Grid</th>
+            <th scope="col">Position</th>
+            <th scope="col">Points</th>
+            <th scope="col">Laps</th>
+            <th scope="col">Time</th>
+            <th scope="col">Fastest Lap</th>
+            <th scope="col">Fastest Lap Time</th>
+            <th scope="col">Fastest Lap Speed</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+      </table>
+      {{ values_dict }}
+    {% endif %}
+
 
 
   </body>

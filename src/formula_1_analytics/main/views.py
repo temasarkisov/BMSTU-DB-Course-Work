@@ -11,25 +11,18 @@ from .forms import SearchForm
 
 def search(request):
     if request.method == 'POST':
-        keywords_dict = request.POST
-        if keywords_dict:
-            print(keywords_dict)
-            return render(request, 'main/result.html', {'keywords_dict': keywords_dict.dict()})
+        values_dict = request.POST.dict()
+        values_dict.pop('csrfmiddlewaretoken', None)
+        print(values_dict.values())
+        for value in values_dict.values():
+            if value != '':
+                return render(request, 'main/search.html', {'values_dict': values_dict, 
+                                                       })
+                break                                                       
         
-        
-        '''keywords_dict = {}
-
-        for idx in range(4):
-            keyword_type = (request.POST[f'keyword_type_{idx}'])
-            keyword = request.POST[f'keyword_{idx}']
-            keywords_dict[keyword_type] = keyword
-
-
-        if keywords_dict:
-            print(keywords_dict)
-            return render(request, 'main/result.html', {'keywords_dict': keywords_dict})'''
 
     return render(request, 'main/search.html', {})
 
 def result(request):
-    return render(request, 'main/result.html', {})
+    return render(request, 'main/result.html', {'values_dict': {},
+                                               })
