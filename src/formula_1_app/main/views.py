@@ -7,6 +7,23 @@ import json
 import requests
 
 
+def value_to_cut_value(value: str) -> str:
+    return value.replace('_', '+').replace('-', '\-')
+
+
+def links_values_to_request(links_list: list, values_list: list) -> str:
+    if len(links_list) == len(values_list):
+        cube_request_cut = ''
+        for i in range(len(links_list)):
+            if i == 0:
+                cube_request_cut += f'{links_list[i]}:{value_to_cut_value(values_list[i])}'
+            else:
+                cube_request_cut += f'|{links_list[i]}:{value_to_cut_value(values_list[i])}'
+        
+        return f'http://localhost:5000/cube/result/facts?cut={cube_request_cut}'
+    
+    return ''
+
 def search(request):
     if request.method == 'POST':
         values_dict = request.POST.dict()
@@ -27,14 +44,7 @@ def search(request):
         #print(links_values_dict)
 
         if links_values_dict:
-            cube_request_cut = ''
-            for i in range(len(links_list)):
-                if i == 0:
-                    cube_request_cut += f'{links_list[i]}:{values_list[i]}'
-                else:
-                    cube_request_cut += f'|{links_list[i]}:{values_list[i]}'
-            cube_request = f'http://localhost:5000/cube/result/facts?cut={cube_request_cut}'
-            
+            cube_request = links_values_to_request(links_list, values_list)
             result_dicts_list = requests.get(cube_request).json()
             print(result_dicts_list[0])
             result_list = []

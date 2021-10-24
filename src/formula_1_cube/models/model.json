@@ -2,15 +2,20 @@
     "cubes": [
         {
             "name": "result",
-            "dimensions": ["driver", "race", "number", "grid", "position", "position_order", "points", "laps", "milliseconds", "fastest_lap", "rank", "fastest_lap_speed"],
+            "dimensions": ["driver", "race", "constructor", "number", "grid", "position", "position_order", "points", "laps", "milliseconds", "fastest_lap", "rank", "fastest_lap_speed"],
             "joins": [
                 {"master":"driver_id", "detail":"driver.driver_id"},
+                {"master":"constructor_id", "detail":"constructor.constructor_id"},
                 {"master":"race_id", "detail":"race.race_id"},
                 {"master":"race.circuit_id", "detail":"circuit.circuit_id"}
             ],
             "mappings": {
                 "race.circuit_name":"circuit.name",
-                "race.circuit_location":"circuit.location"
+                "race.circuit_location":"circuit.location",
+                "race.circuit_country":"circuit.country",
+                "race.circuit_lat":"circuit.lat",
+                "race.circuit_lng":"circuit.lng",
+                "race.circuit_alt":"circuit.alt"
             }
         }
     ],
@@ -61,6 +66,26 @@
             "default_hierarchy_name": "driver_surname_first"   
         },
         {   
+            "name": "constructor",       
+            "levels": [
+                {
+                    "name":"name",
+                    "attributes": ["name"],
+                    "key":"name"
+                },
+                {
+                    "name":"nationality",
+                    "attributes": ["nationality"],
+                    "key":"nationality"
+                }
+            ],
+            "hierarchies": [
+                {"name": "constructor_name_first", "levels":["name"]},
+                {"name": "constructor_nationality_first", "levels":["nationality"]}
+            ],
+            "default_hierarchy_name": "constructor_name_first"   
+        },
+        {   
             "name": "race", 
             "levels": [
                 {
@@ -87,12 +112,38 @@
                     "name":"circuit_location",
                     "attributes": ["circuit_location"],
                     "key":"circuit_location"
+                },
+                {
+                    "name":"circuit_country",
+                    "attributes": ["circuit_country"],
+                    "key":"circuit_country"
+                },
+                {
+                    "name":"circuit_lat",
+                    "attributes": ["circuit_lat"],
+                    "key":"circuit_lat"
+                },
+                {
+                    "name":"circuit_lng",
+                    "attributes": ["circuit_lng"],
+                    "key":"circuit_lng"
+                },
+                {
+                    "name":"circuit_alt",
+                    "attributes": ["circuit_alt"],
+                    "key":"circuit_alt"
                 }
             ],
             "hierarchies": [
                 {"name": "race_name_first", "levels":["name"]},
                 {"name": "race_date_first", "levels":["date"]},
-                {"name": "race_date_round", "levels":["round"]}
+                {"name": "race_round_first", "levels":["round"]},
+                {"name": "circuit_name_first", "levels":["circuit_name"]},
+                {"name": "circuit_location_first", "levels":["circuit_location"]},
+                {"name": "circuit_country_first", "levels":["circuit_country"]},
+                {"name": "circuit_lat_first", "levels":["circuit_lat"]},
+                {"name": "circuit_lng_first", "levels":["circuit_lng"]},
+                {"name": "circuit_alt_first", "levels":["circuit_alt"]}
             ],
             "default_hierarchy_name": "race_name_first" 
         },
