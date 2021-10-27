@@ -1,0 +1,66 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="colorlib.com">
+    <link rel="stylesheet" type="text/css" href="{% static 'main/css/main.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="s003">
+
+        <img src="{% static 'main/svgs/paolo-savini-Catalunya-Circuit.svg' %}" class="login_art">
+
+        <form>
+
+            <div class="col-md-4 offset-md-4 offset-md-7">
+
+                <div class="inner-form">
+
+                    <div class="label-field">
+                        <label for="value_username">Username</label>
+                    </div>
+
+                    <div class="input-field second-wrap">
+                        <input id="value_username" type="text" name="value_username" value="{{ current_keyword }}" placeholder="temasarkisov" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 offset-md-7">
+
+                <div class="inner-form">
+
+                    <div class="label-field">
+                        <label for="value_password">Password</label>
+                    </div>
+
+                    <div class="input-field second-wrap">
+                        <input id="value_password" type="text" name="value_password" value="{{ current_keyword }}" placeholder="qwerty" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 offset-md-7">
+                <input class="btn-search-my" type="submit" value="Login">
+            </div>
+
+        </form>
+    
+    </div>
+
+</body>
+
+
+</html>

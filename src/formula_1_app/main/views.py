@@ -67,8 +67,12 @@ def search(request):
             return render(request, 'main/search.html', {'result_list': result_list, 
                                                        })                                         
 
-    return render(request, 'main/search.html', {})
+    return render(request, 'main/search.html', {'result_list': {},
+                                               })
 
 def result(request):
     return render(request, 'main/result.html', {'result_list': {},
                                                })
+
+def login(request):
+    return render(request, 'main/login.html', {})
