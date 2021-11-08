@@ -16,13 +16,11 @@
 
     <div class="s003">
 
-        <img src="{% static 'main/svgs/paolo-savini-Catalunya-Circuit.svg' %}" class="login_art">
-
         <form method="post">
             
             {% csrf_token %}
 
-            <div class="col-md-4 offset-md-7">
+            <div class="col-md-4 offset-md-4">
 
                 <div class="inner-form">
 
@@ -38,7 +36,23 @@
 
             </div>
 
-            <div class="col-md-4 offset-md-7">
+            <div class="col-md-4 offset-md-4">
+
+                <div class="inner-form">
+
+                    <div class="label-field">
+                        <label for="value_email">Email</label>
+                    </div>
+
+                    <div class="input-field second-wrap">
+                        <input id="value_email" type="text" name="value_email" value="{{ current_keyword }}" placeholder="temasarkisov@pds.com" />
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4 offset-md-4">
 
                 <div class="inner-form">
 
@@ -54,14 +68,24 @@
 
             </div>
 
-            <div class="col-md-4 offset-md-7 d-flex justify-content-center">
-                <div class="text-my">
-                    You can sign up <a href="http://127.0.0.1:8000/main/signup/">here</a>
+            <div class="col-md-4 offset-md-4">
+
+                <div class="inner-form">
+
+                    <div class="label-field">
+                        <label for="value_password_confirm">Confirm Password</label>
+                    </div>
+
+                    <div class="input-field second-wrap">
+                        <input id="value_password_confirm" type="password" name="value_password_confirm" value="{{ current_keyword }}" placeholder="qwerty" />
+                    </div>
+
                 </div>
+
             </div>
 
-            <div class="col-md-4 offset-md-7 d-flex justify-content-end">
-                <input class="btn-login-my" type="submit" value="Login">
+            <div class="col-md-4 offset-4 d-flex justify-content-end">
+                <input class="btn-sign-up-my" type="submit" value="Sign Up">
             </div>
 
         </form>

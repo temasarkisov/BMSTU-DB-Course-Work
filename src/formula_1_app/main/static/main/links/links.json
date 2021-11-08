@@ -2,9 +2,9 @@
     "value_driver_forename":"driver@driver_forename_first",
     "value_driver_surname":"driver@driver_surname_first",
     "value_driver_code":"driver@driver_code_first",
-    "value_driver_number":"driver_number_first",
-    "value_driver_dob":"driver_dob_first",
-    "value_driver_nationality":"driver_nationality_first",
+    "value_driver_number":"driver@driver_number_first",
+    "value_driver_dob":"driver@driver_dob_first",
+    "value_driver_nationality":"driver@driver_nationality_first",
 
     "value_constructor_name":"constructor@constructor_name_first",
     "value_constructor_nationality":"constructor@constructor_nationality_first",

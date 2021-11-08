@@ -1049,6 +1049,27 @@ legend {
   }
 }
 
+.s003 form .inner-form .input-field.second-wrap input::placeholder {
+  color: #a9a9a94f;
+}
+
+
+.result-table {
+  background-color: #000;
+  border-color: #a9a9a94f;
+
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  color: white;
+}
+
+.login_art {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  height: 100%;
+  width: 45%;
+}
 
 .btn-search-my {
   height: 68px;
@@ -1074,22 +1095,89 @@ legend {
 .btn-search-my:hover {
   background: #ff6dc2;
 }
-.btn-search:focus {
+.btn-search-my:focus {
   outline: 0;
   box-shadow: none;
 }
-.s003 form .inner-form .input-field.second-wrap input::placeholder {
-  color: #a9a9a94f;
+
+.btn-sign-up-my {
+  height: 50px;
+  width: 140px;
+  border-radius: 3px;
+  white-space: nowrap;
+  color: black;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+  transition: all .2s ease-out, color .2s ease-out;
+  
+  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+
+  bottom: 15;
+  right: 15;
 }
-.result-table {
+.btn-sign-up-my svg {
+  width: 16px;
+}
+.btn-sign-up-my:hover {
+  background: #ff6dc2;
+}
+.btn-sign-up-my:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+.btn-login-my {
+  height: 50px;
+  width: 74px;
+  border-radius: 3px;
+  white-space: nowrap;
+  color: black;
+  border: 0;
+  cursor: pointer;
+  background: #fff;
+  transition: all .2s ease-out, color .2s ease-out;
+  
   font-size: 13px;
   font-family: 'Poppins', sans-serif;
 }
+.btn-login-my svg {
+  width: 16px;
+}
+.btn-login-my:hover {
+  background: #ff6dc2;
+}
+.btn-login-my:focus {
+  outline: 0;
+  box-shadow: none;
+}
 
-.login_art {
-  position: absolute;
-  bottom: 0;
-  left: 50px;
-  height: 100%;
-  width: 45%;
+.text-my {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif; 
+  color:rgb(150, 150, 150)
+}
+
+a:link {
+  color: #ff6dc2;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #ff6dc2;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: hsl(325, 100%, 64%);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:active {
+  color: #ff6dc2;
+  background-color: transparent;
+  text-decoration: none;
 }
